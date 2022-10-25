@@ -10,6 +10,7 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET!
     })
   ],
+  secret: process.env.SECRET,
   callbacks: {
     async jwt({ token, account }) {
       if (account) {
