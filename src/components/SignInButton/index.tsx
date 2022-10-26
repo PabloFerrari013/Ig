@@ -7,8 +7,6 @@ import styles from './SigninButton.module.scss'
 const SignInButton: React.FC = () => {
   const { data: session } = useSession()
 
-  console.log(session)
-
   if (!session)
     return (
       <button

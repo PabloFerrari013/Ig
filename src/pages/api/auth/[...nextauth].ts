@@ -27,7 +27,11 @@ export const authOptions = {
 
       try {
         await faunadb.query(
-          q.Create(q.Collection('users'), { data: { email } })
+          q.If(
+            q.Exists(q.Match(q.Index('user_by_email'), q.Casefold(email))),
+            true,
+            q.Create(q.Collection('users'), { data: { email } })
+          )
         )
 
         return true
